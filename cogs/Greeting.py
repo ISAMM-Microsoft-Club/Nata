@@ -12,6 +12,9 @@ class Greeting(commands.Cog):
         channel = member.guild.system_channel
         if channel is not None:
             await channel.send('Welcome {0.mention}.'.format(member))
+        # if member.guild.id == 707879098984695808:
+        #     await member.add_roles(discord.utils.get(member.guild.roles, name="Member"))
+        await member.send(f'Welcome to the server, {member.mention}!')
 
     @commands.command()
     async def hello(self, ctx, *, member: discord.Member = None):
@@ -25,4 +28,5 @@ class Greeting(commands.Cog):
       
 
 def setup(bot):
+	bot.add_cog(Greeting(bot))
 	bot.add_cog(Greeting(bot))

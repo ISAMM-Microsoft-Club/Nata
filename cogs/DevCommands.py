@@ -26,7 +26,7 @@ class DevCommands(commands.Cog, name='Developer Commands'):
 		base_string += "\n```";  print(base_string)
 		await ctx.send(base_string)
 
-	@commands.command(name="args", aliases=['ar'], hidden=True)
+	@commands.command(name="args", aliases=['ar'])
 	async def multi_quote(self, ctx, *args):
 			one_word_per_line = '\n'.join(args)
 			quote_text = 'You said:\n>>> {}'.format(one_word_per_line)
@@ -37,6 +37,18 @@ class DevCommands(commands.Cog, name='Developer Commands'):
 	async def formation(self, ctx, time):
 		frm = Formation( self.bot, ctx, time, ctx.author.id)
 		await frm.confirmation()
+
+	@commands.command(name="assign_roles")
+	async def assign_roles(self, ctx, *, role_names):
+		'''
+		Assigns roles to a user/users. ( )
+		'''
+		roles = role_names.split(',')
+		for role in roles:
+			role = role.strip()
+			role = discord.utils.get(ctx.guild.roles, name=role)
+			await ctx.author.add_roles(role)
+
 
 	@commands.Cog.listener()
 	async def on_message(self, message):
