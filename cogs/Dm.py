@@ -15,7 +15,7 @@ class Dm(commands.Cog):
 
       if isinstance(message.channel, discord.channel.DMChannel):
         print(message.author.name)
-        await message.channel.send(f'Hello {message.author.name}')
+        await message.channel.send(f'Hello {message.author.name}!')
 
 
 def setup(bot):
