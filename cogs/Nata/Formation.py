@@ -32,5 +32,4 @@ class Formation:
     channel = self.bot.get_channel(992785842101813251) #gets the channel you want to get the list from
 
     for member in channel.voice_states.keys() :
-      user = get(self.bot.get_all_members(), id=member)
-      print(user)
+      print(memer)
