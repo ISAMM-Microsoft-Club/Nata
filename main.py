@@ -1,5 +1,6 @@
 
 import os
+
 import discord
 from discord.ext import commands
 
@@ -21,7 +22,8 @@ async def on_ready():
 extensions = [
 	'cogs.DevCommands',
   'cogs.Greeting',
-  'cogs.Dm'
+  'cogs.Dm',
+  'cogs.Roles',
 ]
 
 if __name__ == '__main__':  # Ensures this is the file being ran
