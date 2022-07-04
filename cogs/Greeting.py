@@ -25,8 +25,11 @@ class Greeting(commands.Cog):
         else:
             await ctx.send('Hello {0.name}... This feels familiar.'.format(member))
         self._last_member = member
-      
+
+    @commands.Cog.listener()
+    async def on_reaction_add(self, reaction, user:User):
+        if not reaction.message.guild:
+            print('reaction detected')
 
 def setup(bot):
-	bot.add_cog(Greeting(bot))
 	bot.add_cog(Greeting(bot))
