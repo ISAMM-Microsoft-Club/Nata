@@ -2,6 +2,7 @@ import multiprocessing
 import time
 from dataclasses import dataclass
 
+import discord
 from discord.utils import get
 
 roles = {
@@ -31,5 +32,7 @@ class Formation:
     time.sleep(self.time)
     channel = self.bot.get_channel(992785842101813251) #gets the channel you want to get the list from
 
-    for member in channel.voice_states.keys() :
-      print(memer)
+
+    for member in channel.voice_states.keys():
+      print(member)
+
