@@ -26,19 +26,7 @@ class Greeting(commands.Cog):
             await ctx.send('Hello {0.name}... This feels familiar.'.format(member))
         self._last_member = member
 
-    @commands.Cog.listener()
-    async def on_raw_reaction_add(self, payload: discord.RawReactionActionEvent):
-        # role, user = self.parse_reaction_payload(payload)
-        # if role is not None and user is not None:
-            # await user.add_roles(role, reason="ReactionRole")
-            print("reaction added")
 
-    @commands.Cog.listener()
-    async def on_raw_reaction_remove(self, payload: discord.RawReactionActionEvent):
-        # role, user = self.parse_reaction_payload(payload)
-        # if role is not None and user is not None:
-            print("reaction removed")
-            # await user.remove_roles(role, reason="ReactionRole")
 
 def setup(bot):
 	bot.add_cog(Greeting(bot))
