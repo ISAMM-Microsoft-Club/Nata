@@ -10,21 +10,19 @@ class DevCommands(commands.Cog, name='Developer Commands'):
 	def __init__(self, bot):
 		self.bot = bot
 
-	async def cog_check(self, ctx):  
-		'''
-		The default check for this cog whenever a command is used. Returns True if the command is allowed.
-		'''
-		return ctx.author.id in self.bot.owner_ids
+	async def cog_check(self, ctx):
+		return ctx.author.id in self.bot.data	["owner_ids"]
+
 
 	@commands.command(name="listcogs", aliases=['lc'])
 	async def listcogs(self, ctx):
 		'''
 		Returns a list of all enabled commands.
 		'''
-		base_string = "```css\n"
-		base_string += "\n".join([str(cog) for cog in self.bot.extensions])
-		base_string += "\n```";  print(base_string)
-		await ctx.send(base_string)
+		embed = discord.Embed(title="Cogs List", description="A list of all cogs", color=0xE91E63)
+		message = "***-***\n".join([str(cog) for cog in self.bot.extensions])
+		embed.add_field(name="test", value=message)
+		await ctx.send(embed=embed)
 
 	@commands.command(name="args", aliases=['ar'])
 	async def multi_quote(self, ctx, *args):
@@ -38,6 +36,7 @@ class DevCommands(commands.Cog, name='Developer Commands'):
 		frm = Formation( self.bot, ctx, time, ctx.author.id)
 		await frm.confirmation()
 
+
 	@commands.command(name="assign_roles")
 	async def assign_roles(self, ctx, *, role_names):
 		'''
@@ -50,12 +49,24 @@ class DevCommands(commands.Cog, name='Developer Commands'):
 			await ctx.author.add_roles(role)
 
 
-	@commands.Cog.listener()
-	async def on_message(self, message):
-		if message.author == self.bot.user:
-			return
-		if any(word in message.content.lower() for word in ['nitro', 'curse2']):
-			await message.delete()
+	@commands.command(name="rolesInit", aliases=['ri'])
+	async def roles__init__(self, ctx):
+			channel = discord.utils.get(ctx.guild.channels, name="roles")
+			# if len (await channel.history(limit=10).flatten() ) != 0:
+			# 	return
+			embed = discord.Embed(title="Product Select", description="React to the emojis corresponding with what you need", color=0xE91E63)
+			embed.add_field(name="test", value="""
+											:white_check_mark: :    big data
+											***-***
+											:heart: :    immmmm
+											***-***
+											:x: :    cmmmmm
+											""")
+			message = await channel.send(embed=embed)
+			await message.add_reaction("✅")
+			await message.add_reaction("❤️")
+			await message.add_reaction("❌")
+
 
 def setup(bot):
 	bot.add_cog(DevCommands(bot))

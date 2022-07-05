@@ -1,4 +1,5 @@
 
+import json
 import os
 
 import discord
@@ -6,13 +7,20 @@ from discord.ext import commands
 
 from keep_alive import keep_alive
 
+intents = discord.Intents.default()
+intents.members = True
+
 bot = commands.Bot(
 	command_prefix="!",  
-	case_insensitive=True  
+	case_insensitive=True ,
+  intents=intents
 )
 
+
+with open("./Data.json") as data:
+  bot.data = json.load(data)
+
 bot.author_id = 476044993505525780
-bot.owner_ids = [476044993505525780, 876187417634291752]
 
 @bot.event 
 async def on_ready(): 

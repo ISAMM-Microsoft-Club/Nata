@@ -1,56 +1,52 @@
 import discord
+from discord import PartialEmoji, RawReactionActionEvent
 from discord.ext import commands
+from discord.utils import get
 
 
-class Greeting(commands.Cog):
-    def __init__(self, bot):
+class Roles(commands.Cog):
+    def __init__(self, bot: commands.Bot):
         self.bot = bot
 
-    async def cog_check(self, ctx):  
-        '''
-        The default check for this cog whenever a command is used. Returns True if the command is allowed.
-        '''
-        return ctx.author.id in self.bot.owner_ids
+    async def cog_check(self, ctx):
+        return ctx.channel.id == self.bot.data["roles_channel"]
 
     @commands.Cog.listener()
     async def on_raw_reaction_add(self, payload: discord.RawReactionActionEvent):
+        if payload.channel_id != 993567548605989054 or payload.user_id == self.bot.user.id:
+            return
 
-        # await user.add_roles(role, reason="ReactionRole")
-        print("reaction added")
+        user_id, role = self.parse_payload(payload)
+        print(f"reaction added by {user_id} for {role} ")
+        reactions = ["❌", "✅", "❤️"]
+        roles = [993966213535367188, 993938327294201976, 993938357384130701]
+        if role in reactions:
+            server = self.bot.get_guild(payload.guild_id)
+            role = server.get_role(roles[reactions.index(role)])
+            user = server.get_member(user_id)
+            await user.add_roles(role)
 
     @commands.Cog.listener()
     async def on_raw_reaction_remove(self, payload: discord.RawReactionActionEvent):
-        # role, user = self.parse_reaction_payload(payload)
-        # if role is not None and user is not None:
-            print("reaction removed")
-            # await user.remove_roles(role, reason="ReactionRole")
-
-    # def parse_payload(self, payload: discord.RawReactionActionEvent):
-    #     user_id, 
-    @commands.command(name="rolesInit", aliases=['ri'])
-    async def check_if_message_exists(self, ctx):
-        channel = discord.utils.get(ctx.guild.channels, name="roles")
-        # message = await channel.history(limit=10).flatten()[0]
-        embed = discord.Embed(title="Product Select", description="React to the emojis corresponding with what you need", color=0xE91E63)
-        embed.add_field(name="test", value="""
-                        :white_check_mark: :    big data
-                        ***-***
-                        :heart: :    immmmm
-                        ***-***
-                        :x: :    cmmmmm
-                        """)
-        message = await channel.send(embed=embed)
-        await message.add_reaction("✅")
-        await message.add_reaction("❤️")
-        await message.add_reaction("❌")
-        # await message.add_reaction(":x:")
-        # await message.add_reaction(":heart:")
-        # await channel.send("Hello") if not channel.history else print("it's there")
+        user_id, role = self.parse_payload(payload)
+        print(f"reaction REMOVED by {user_id} for {role} ")
+        reactions = ["❌", "✅", "❤️"]
+        roles = [993966213535367188, 993938327294201976, 993938357384130701]
+        if role in reactions:
+            server = self.bot.get_guild(payload.guild_id)
+            role = server.get_role(roles[reactions.index(role)])
+            user = server.get_member(user_id)
+            await user.remove_roles(role)
 
 
-    def check_reaction_channel(self, channel: discord.TextChannel):
-        return channel.id == 707879098984695808
+    def parse_payload(self, payload: RawReactionActionEvent):
+        return payload.user_id, payload.emoji.name
 
-    #     return role, user
+
+
+
+
+
+
 def setup(bot):
-	bot.add_cog(Greeting(bot))
+	bot.add_cog(Roles(bot))

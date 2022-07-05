@@ -1,0 +1,38 @@
+{
+  "roles_channel": 707879098984695808,
+  "owner_ids": [476044993505525780, 876187417634291752],
+  "departments" : {
+    "logistics" : {
+      "trainer":"",
+      "channel":""
+    },
+    "formation": {
+      "trainer":"",
+      "channel":""
+    },
+    "design": {
+      "trainer":"",
+      "channel":""
+    },
+    "sponsoring": {
+      "trainer":"",
+      "channel":""
+    },
+    "exec": {
+      "trainer":"",
+      "channel":""
+    }
+  },
+  "chefs" : {
+    "00000": {
+      "dept": "",
+      "channel" :""
+    }
+  },
+  "roles" : {
+    "✅": "sponsoring",
+    "❤️": "design",
+    "❌": "exec",
+    "👏":"dee"
+  }
+}
