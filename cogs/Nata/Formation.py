@@ -26,7 +26,7 @@ class Formation:
     thread.start()
 
   async def confirmation(self):
-    await self.ctx.send(f"Formation in {self.time} seconds (by {roles[str(self.chef)]} )")
+    await self.ctx.send(f"Formation in {self.time} seconds ( by {roles[str(self.chef)]} )")
 
   def presence (self, _):
     time.sleep(self.time)

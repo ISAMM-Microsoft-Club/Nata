@@ -11,7 +11,7 @@ class DevCommands(commands.Cog, name='Developer Commands'):
 		self.bot = bot
 
 	async def cog_check(self, ctx):
-		return ctx.author.id in self.bot.data	["owner_ids"]
+		return ctx.author.id in self.bot.owner_ids
 
 
 	@commands.command(name="listcogs", aliases=['lc'])
@@ -56,12 +56,12 @@ class DevCommands(commands.Cog, name='Developer Commands'):
 			# 	return
 			embed = discord.Embed(title="Product Select", description="React to the emojis corresponding with what you need", color=0xE91E63)
 			embed.add_field(name="test", value="""
-											:white_check_mark: :    big data
-											***-***
-											:heart: :    immmmm
-											***-***
-											:x: :    cmmmmm
-											""")
+:white_check_mark: :    big data
+***-***
+:heart: :    immmmm
+***-***
+:x: :    cmmmmm
+""")
 			message = await channel.send(embed=embed)
 			await message.add_reaction("✅")
 			await message.add_reaction("❤️")
