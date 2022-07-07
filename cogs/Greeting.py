@@ -12,11 +12,14 @@ class Greeting(commands.Cog):
     async def hello(self, ctx, *, member: discord.Member = None):
         """Says hello"""
         member = member or ctx.author
-        if self._last_member is None or self._last_member.id != member.id:
-            await ctx.send('Hello {0.name}~'.format(member))
-        else:
-            await ctx.send('Hello {0.name}... This feels familiar.'.format(member))
-        self._last_member = member
+        if member.id in self.bot.chefs_check:
+            await ctx.send(f"Hello {self.bot.chefs[str(member.id)]} {member.nick or member.name}!")
+        else :
+            if self._last_member is None or self._last_member.id != member.id:
+                await ctx.send('Hello {}~'.format(member.nick))
+            else:
+                await ctx.send('Hello {}... This feels familiar.'.format(member.nick))
+            self._last_member = member
 
 
 def setup(bot):
