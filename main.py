@@ -20,10 +20,13 @@ bot = commands.Bot(
 with open("./Data.json") as data:
   Variables = json.load(data)
   bot.owner_ids = Variables["owner_ids"]
-  bot.roles_channel_id = Variables["roles_channel_id"]
+  bot.roles_channel = Variables["roles_channel"]
   bot.reactions = Variables["roles"]["emojis"]
   bot.roles = Variables["roles"]["roles"]
-  bot.real_name_channel = 994512855212765245
+  bot.real_name_channel = Variables["real_name_channel"]
+  bot.chefs = Variables["chefs"]
+  bot.new_member_role = Variables["roles"]["newmember"]
+  bot.member_role = Variables["roles"]["member"]
 
 bot.author_id = 476044993505525780
 
@@ -37,7 +40,8 @@ extensions = [
   'cogs.Greeting',
   'cogs.Dm',
   'cogs.Roles',
-  'cogs.General'
+  'cogs.General',
+  'cogs.ChefCommands',
 ]
 
 if __name__ == '__main__':  # Ensures this is the file being ran

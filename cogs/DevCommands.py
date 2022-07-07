@@ -31,12 +31,6 @@ class DevCommands(commands.Cog, name='Developer Commands'):
 			await ctx.send(quote_text)
 
 
-	@commands.command(name="formation", aliases=['fm'])
-	async def formation(self, ctx, time):
-		frm = Formation( self.bot, ctx, time, ctx.author.id)
-		await frm.confirmation()
-
-
 	@commands.command(name="assign_roles")
 	async def assign_roles(self, ctx, *, role_names):
 		'''
@@ -66,6 +60,7 @@ class DevCommands(commands.Cog, name='Developer Commands'):
 			await message.add_reaction("✅")
 			await message.add_reaction("❤️")
 			await message.add_reaction("❌")
+
 
 
 def setup(bot):

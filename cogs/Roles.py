@@ -10,7 +10,7 @@ class Roles(commands.Cog):
 
     @commands.Cog.listener()
     async def on_member_join(self, member: discord.Member):
-        await member.add_roles(member.guild.get_role(994516549689950268))
+        await member.add_roles(member.guild.get_role(self.bot.new_member_role))
 
     @commands.Cog.listener()
     async def on_message(self, message: discord.Message):
@@ -32,12 +32,12 @@ class Roles(commands.Cog):
             message = await self.bot.get_channel(payload.channel_id).fetch_message(payload.message_id)
             if str(payload.member.id) in message.content:
 
-                await payload.member.add_roles(message.guild.get_role(994513081432551485))
-                await payload.member.remove_roles(message.guild.get_role(994516549689950268))
+                await payload.member.add_roles(message.guild.get_role(self.bot.member_role))
+                await payload.member.remove_roles(message.guild.get_role(self.bot.new_member_role))
                 client_message = await self.bot.get_channel(payload.channel_id).fetch_message(message.reference.message_id)
                 await client_message.reply(f'enjoy your stay {client_message.content}!')
 
-        if payload.channel_id == self.bot.roles_channel_id:
+        if payload.channel_id == self.bot.roles_channel:
 
             user_id, role = self.parse_payload(payload)
             print(f"reaction added by {user_id} for {role} ")
@@ -49,7 +49,7 @@ class Roles(commands.Cog):
 
     @commands.Cog.listener()
     async def on_raw_reaction_remove(self, payload: discord.RawReactionActionEvent):
-        if payload.channel_id != self.bot.roles_channel_id or payload.user_id == self.bot.user.id:
+        if payload.channel_id != self.bot.roles_channel or payload.user_id == self.bot.user.id:
             return
         user_id, role = self.parse_payload(payload)
         print(f"reaction REMOVED by {user_id} for {role} ")
