@@ -19,7 +19,7 @@ class Roles(commands.Cog):
         if message.author.id == self.bot.user.id:
             return
         if message.channel.id == self.bot.real_name_channel:
-            msg = await message.reply(f'{message.author.name} logged in as {message.content} (react with ❤ to confirm)')
+            msg = await message.reply(f'{message.author} logged in as {message.content} (react with ❤ to confirm)')
             await msg.add_reaction('❤')
 
 
@@ -35,11 +35,10 @@ class Roles(commands.Cog):
             client_message = await self.bot.get_channel(payload.channel_id).fetch_message(message.reference.message_id)
             if payload.member.id == client_message.author.id:
                 await client_message.reply(f'enjoy your stay {client_message.content}!')
-                discord_user = str(payload.member.name)
                 await payload.member.edit(nick=client_message.content)
                 await payload.member.add_roles(message.guild.get_role(self.bot.member_role))
                 await payload.member.remove_roles(message.guild.get_role(self.bot.new_member_role))
-                print(f'Nickname was changed for {discord_user} of id {payload.member.id} to {client_message.content} ')
+                print(f'Nickname was changed for {payload.member} to {client_message.content} ')
 
         if payload.channel_id == self.bot.roles_channel:
 
