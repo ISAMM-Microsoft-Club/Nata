@@ -23,6 +23,7 @@ with open("./Data.json") as data:
   bot.roles_channel_id = Variables["roles_channel_id"]
   bot.reactions = Variables["roles"]["emojis"]
   bot.roles = Variables["roles"]["roles"]
+  bot.real_name_channel = 994512855212765245
 
 bot.author_id = 476044993505525780
 

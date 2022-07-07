@@ -7,14 +7,6 @@ class Greeting(commands.Cog):
         self.bot = bot
         self._last_member = None
 
-    @commands.Cog.listener()
-    async def on_member_join(self, member):
-        channel = member.guild.system_channel
-        if channel is not None:
-            await channel.send('Welcome {0.mention}.'.format(member))
-        # if member.guild.id == 707879098984695808:
-        #     await member.add_roles(discord.utils.get(member.guild.roles, name="Member"))
-        await member.send(f'Welcome to the server, {member.mention}!')
 
     @commands.command()
     async def hello(self, ctx, *, member: discord.Member = None):
