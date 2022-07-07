@@ -12,7 +12,7 @@ class ChefCommands(commands.Cog, name='Developer Commands'):
 		self.bot = bot
 
 	async def cog_check(self, ctx):
-		return ctx.author.id in self.bot.chefs
+		return ctx.author.id in self.bot.chefs_check
 
 
 	@commands.command(name="formation", aliases=['fm'])

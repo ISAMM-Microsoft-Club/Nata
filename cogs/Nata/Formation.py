@@ -5,11 +5,6 @@ from dataclasses import dataclass
 import discord
 from discord.utils import get
 
-roles = {
-  "476044993505525780" : "Vice President",
-  "876187417634291752" : "President"
-}
-
 
 @dataclass
 class Formation:
@@ -26,7 +21,7 @@ class Formation:
     thread.start()
 
   async def confirmation(self):
-    await self.ctx.send(f"Formation in {self.time} seconds ( by {roles[str(self.chef)]} )")
+    await self.ctx.send(f"Formation in {self.time} seconds ( by {self.bot.chefs[str(self.chef)]} )")
 
   def presence (self, _):
     time.sleep(self.time)
