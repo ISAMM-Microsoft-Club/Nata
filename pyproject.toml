@@ -1,8 +1,8 @@
 [tool.poetry]
-name = "discordpy-bot-template-with-commands-extension"
-version = "0.1.0"
-description = ""
-authors = ["Your Name <you@example.com>"]
+name = "IMC Discord Bot"
+version = "0.3.1"
+description = "Automation Babyyyy"
+authors = ["Khairi Hammami", "Mariem Moalla"]
 
 [tool.poetry.dependencies]
 python = "^3.8"
