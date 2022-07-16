@@ -1,3 +1,4 @@
+import asyncio
 import discord
 from discord.ext import commands
 
@@ -26,41 +27,31 @@ class DevCommands(commands.Cog, name='Developer Commands'):
 
 	@commands.command(name="args", aliases=['ar'])
 	async def multi_quote(self, ctx, *args):
-			one_word_per_line = '\n'.join(args)
-			quote_text = 'You said:\n>>> {}'.format(one_word_per_line)
-			await ctx.send(quote_text)
-
-
-	@commands.command(name="assign_roles")
-	async def assign_roles(self, ctx, *, role_names):
-		'''
-		Assigns roles to a user/users. ( )
-		'''
-		roles = role_names.split(',')
-		for role in roles:
-			role = role.strip()
-			role = discord.utils.get(ctx.guild.roles, name=role)
-			await ctx.author.add_roles(role)
+		one_word_per_line = '\n'.join(args)
+		quote_text = 'You said:\n>>> {}'.format(one_word_per_line)
+		await asyncio.sleep(5)
+		await ctx.send(quote_text)
 
 
 	@commands.command(name="rolesInit", aliases=['ri'])
 	async def roles__init__(self, ctx):
-			channel = discord.utils.get(ctx.guild.channels, name="roles")
-			# if len (await channel.history(limit=10).flatten() ) != 0:
-			# 	return
-			embed = discord.Embed(title="Product Select", description="React to the emojis corresponding with what you need", color=0xE91E63)
-			embed.add_field(name="test", value="""
+		"""Initializes The roles messsage in 'Roles' channel
+		"""
+		channel = discord.utils.get(ctx.guild.channels, name="roles")
+		# if len (await channel.history(limit=10).flatten() ) != 0:
+		# 	return
+		embed = discord.Embed(title="Product Select", description="React to the emojis corresponding with what you need", color=0xE91E63)
+		embed.add_field(name="test", value="""
 :white_check_mark: :    big data
 ***-***
 :heart: :    immmmm
 ***-***
 :x: :    cmmmmm
 """)
-			message = await channel.send(embed=embed)
-			await message.add_reaction("✅")
-			await message.add_reaction("❤️")
-			await message.add_reaction("❌")
-
+		message = await channel.send(embed=embed)
+		await message.add_reaction("✅")
+		await message.add_reaction("❤️")
+		await message.add_reaction("❌")
 
 
 def setup(bot):
