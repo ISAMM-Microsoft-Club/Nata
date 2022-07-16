@@ -37,6 +37,7 @@ class Roles(commands.Cog):
                 await client_message.reply(f'enjoy your stay {client_message.content}!')
                 await payload.member.edit(nick=client_message.content)
                 await payload.member.add_roles(message.guild.get_role(self.bot.member_role))
+                await payload.member.add_roles(message.guild.get_role(self.bot.no_department))
                 await payload.member.remove_roles(message.guild.get_role(self.bot.new_member_role))
                 print(f'Nickname was changed for {payload.member} to {client_message.content} ')
 
@@ -48,7 +49,7 @@ class Roles(commands.Cog):
                 guild = self.bot.get_guild(payload.guild_id)
                 role = guild.get_role(self.bot.roles[self.bot.reactions.index(role)])
                 await payload.member.add_roles(role)
-                await payload.member.remove_roles(guild.get_role(self.bot.no_role))
+                await payload.member.remove_roles(guild.get_role(self.bot.no_department))
 
     @commands.Cog.listener()
     async def on_raw_reaction_remove(self, payload: discord.RawReactionActionEvent):
@@ -61,7 +62,7 @@ class Roles(commands.Cog):
             role = guild.get_role(self.bot.roles[self.bot.reactions.index(role)])
             member = guild.get_member(user_id)
             await member.remove_roles(role)
-            await member.add_roles(guild.get_role(self.bot.no_role))
+            await member.add_roles(guild.get_role(self.bot.no_department))
 
     def parse_payload(self, payload: RawReactionActionEvent):
         return payload.user_id, payload.emoji.name
@@ -71,3 +72,4 @@ class Roles(commands.Cog):
 
 def setup(bot):
     bot.add_cog(Roles(bot))
+
