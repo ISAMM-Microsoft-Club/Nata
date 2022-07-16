@@ -17,7 +17,7 @@ bot = commands.Bot(
 )
 
 
-with open("./Data.json") as data:
+with open("./__Data.json") as data:
   Variables = json.load(data)
   bot.owner_ids = Variables["owner_ids"]
   bot.roles_channel = Variables["roles_channel"]
@@ -26,6 +26,7 @@ with open("./Data.json") as data:
   bot.real_name_channel = Variables["real_name_channel"]
   bot.chefs_check = [int(id) for id in list(Variables["chefs"].keys())]
   bot.chefs = Variables["chefs"]
+  bot.chef_department = Variables["chef_department"]
   bot.new_member_role = Variables["roles"]["newmember"]
   bot.member_role = Variables["roles"]["member"]
   bot.no_department = Variables["roles"]["no_department"]
@@ -44,6 +45,7 @@ extensions = [
   'cogs.Roles',
   'cogs.General',
   'cogs.ChefCommands',
+  'cogs.ErrorHandling',
 ]
 
 if __name__ == '__main__':
