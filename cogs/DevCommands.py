@@ -1,8 +1,7 @@
 import asyncio
+
 import discord
 from discord.ext import commands
-
-from .Nata.Formation import Formation
 
 
 class DevCommands(commands.Cog, name='Developer Commands'):
@@ -38,8 +37,6 @@ class DevCommands(commands.Cog, name='Developer Commands'):
 		"""Initializes The roles messsage in 'Roles' channel
 		"""
 		channel = discord.utils.get(ctx.guild.channels, name="roles")
-		# if len (await channel.history(limit=10).flatten() ) != 0:
-		# 	return
 		embed = discord.Embed(title="Product Select", description="React to the emojis corresponding with what you need", color=0xE91E63)
 		embed.add_field(name="test", value="""
 :white_check_mark: :    big data
