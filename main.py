@@ -28,7 +28,7 @@ with open("./Data.json") as data:
   bot.chefs = Variables["chefs"]
   bot.new_member_role = Variables["roles"]["newmember"]
   bot.member_role = Variables["roles"]["member"]
-  bot.no_role = Variables["roles"]["noRoles"]
+  bot.no_department = Variables["roles"]["no_department"]
 
 bot.author_id = 476044993505525780
 
@@ -46,11 +46,11 @@ extensions = [
   'cogs.ChefCommands',
 ]
 
-if __name__ == '__main__':  # Ensures this is the file being ran
+if __name__ == '__main__':
 	for extension in extensions:
-		bot.load_extension(extension)  # Loades every extension.
+		bot.load_extension(extension)
 
-keep_alive()  # Starts a webserver to be pinged.
-token = os.environ.get("DISCORD_BOT_SECRET") 
+keep_alive()
+token = os.environ.get("DISCORD_BOT_SECRET")
 
-bot.run(token)  # Starts the bot
+bot.run(token)
