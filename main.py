@@ -30,6 +30,7 @@ with open("./__Data.json") as data:
   bot.new_member_role = Variables["roles"]["newmember"]
   bot.member_role = Variables["roles"]["member"]
   bot.no_department = Variables["roles"]["no_department"]
+  bot.welcome_channel = Variables["welcome_channel"]
 
 bot.author_id = 476044993505525780
 
