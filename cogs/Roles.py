@@ -21,10 +21,6 @@ class Roles(commands.Cog):
         if message.author.id == self.bot.user.id:
             return
         if message.channel.id == self.bot.real_name_channel:
-            if message.content == 'clear':
-                await self.bot.get_channel(message.channel.id).purge(limit=100)
-                print('purged')
-                return
             msg = await message.reply(f'{message.author} logged in as {message.content} (react with ❤ to confirm)')
             await msg.add_reaction('❤')
             previous = await message.channel.fetch_message(self.boilerplate[str(message.author.id)])

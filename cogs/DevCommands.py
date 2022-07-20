@@ -50,6 +50,11 @@ class DevCommands(commands.Cog, name='Developer Commands'):
 		await message.add_reaction("❤️")
 		await message.add_reaction("❌")
 
+	@commands.command(name="clear", aliases=['cls'])
+	async def clear(self, ctx):
+		await self.bot.get_channel(ctx.channel.id).purge(limit=1000)
+		print('purged')
+		return
 
 def setup(bot):
 	bot.add_cog(DevCommands(bot))

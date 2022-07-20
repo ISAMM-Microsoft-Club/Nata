@@ -11,7 +11,7 @@ intents = discord.Intents.default()
 intents.members = True
 
 bot = commands.Bot(
-	command_prefix="!",  
+	command_prefix="!",
 	case_insensitive=True ,
   intents=intents
 )
