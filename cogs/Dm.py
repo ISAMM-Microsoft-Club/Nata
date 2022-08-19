@@ -18,5 +18,5 @@ class Dm(commands.Cog):
         await message.channel.send(f'Hello {message.author.name}!')
 
 
-def setup(bot):
-	bot.add_cog(Dm(bot))
+async def setup(bot):
+	await bot.add_cog(Dm(bot))

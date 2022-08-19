@@ -6,7 +6,7 @@ from discord.ext import commands
 from .Nata.Meet import Meet
 
 
-class ChefCommands(commands.Cog, name='Developer Commands'):
+class ChefCommands(commands.Cog, name='Chef Commands'):
 	'''These are the developer commands'''
 
 	def __init__(self, bot):
@@ -25,6 +25,16 @@ class ChefCommands(commands.Cog, name='Developer Commands'):
 			return
 		await Meet( self.bot, ctx, time, link, ctx.author.id, args[0]).meet()
 
+	@meet.error
+	async def do_repeat_handler(self, ctx, error):
+		print('error')
+		if isinstance(error, commands.MissingRequiredArgument):
+			await ctx.send("You forgot to give an argument!")
+			embed=discord.Embed(title="Meet Command Example", description="!meet <time> <PV link> <Department>", color=0x00ffff)
+			await ctx.send(embed=embed)
+		else:
+			await ctx.send(error)
 
-def setup(bot):
-	bot.add_cog(ChefCommands(bot))
+async def setup(bot):
+	await bot.add_cog(ChefCommands(bot))
+

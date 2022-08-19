@@ -22,5 +22,5 @@ class Greeting(commands.Cog):
             self._last_member = member
 
 
-def setup(bot):
-	bot.add_cog(Greeting(bot))
+async def setup(bot):
+	await bot.add_cog(Greeting(bot))

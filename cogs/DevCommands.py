@@ -46,9 +46,9 @@ class DevCommands(commands.Cog, name='Developer Commands'):
 :x: :    cmmmmm
 """)
 		message = await channel.send(embed=embed)
-		await message.add_reaction("✅")
-		await message.add_reaction("❤️")
-		await message.add_reaction("❌")
+		reactions = ['✅', '❤️', '❌']
+		for reaction in reactions:
+			await message.add_reaction(reaction)
 
 	@commands.command(name="clear", aliases=['cls'])
 	async def clear(self, ctx):
@@ -56,5 +56,5 @@ class DevCommands(commands.Cog, name='Developer Commands'):
 		print('purged')
 		return
 
-def setup(bot):
-	bot.add_cog(DevCommands(bot))
+async def setup(bot):
+	await bot.add_cog(DevCommands(bot))
