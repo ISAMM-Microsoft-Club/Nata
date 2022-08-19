@@ -28,6 +28,7 @@ body:
       description: please fill your system informations
       value: >
         Operating System : 
+        
         Python version : 
     validations:
       required: true
