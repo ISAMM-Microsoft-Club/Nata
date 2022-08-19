@@ -1,6 +1,6 @@
 name: Feature Request
 description: Suggest a feature for Nata!
-labels: feature request
+labels: enhancement
 title: "[Feature]: "
 body:
   - type: input
@@ -16,6 +16,7 @@ body:
       label: What is the feature request for?
       options:
         - Bot Commands
+        - Core features
         - The documentation
     validations:
       required: true

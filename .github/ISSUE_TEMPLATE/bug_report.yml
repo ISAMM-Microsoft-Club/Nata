@@ -27,19 +27,18 @@ body:
       label: System Information
       description: please fill your system informations
       value: >
-        Operating System : 
-        
-        Python version : 
+        Operating System : [e.g. Windows 11]
+
+        Python version : [e.g. Python 3.6]
     validations:
       required: true
-  - type: checkboxes
+  - type: textarea
     attributes:
-      label: Checklist
+      label: Screenshots
       description: >
-        Let's make sure you've properly done due diligence when reporting this issue!
-      options:
-        - label: I have searched the open issues for duplicates.
-          required: true
+         If applicable, add screenshots to help explain your problem.
+    validations:
+      required: false
   - type: textarea
     attributes:
       label: Additional Context
