@@ -6,7 +6,7 @@ from discord.ext import commands
 from .Schedule.Meet import Meet
 
 
-class ChefCommands(commands.Cog, name='Chef Commands'):
+class ChefCommands(commands.Cog, name='Chef Commands', description='Chef Commands'):
 	'''These are the developer commands'''
 
 	def __init__(self, bot):
@@ -16,7 +16,7 @@ class ChefCommands(commands.Cog, name='Chef Commands'):
 		return ctx.author.id in self.bot.config.chefs_check
 
 
-	@commands.command(name="meet", aliases=['fm'])
+	@commands.command(name="meet", aliases=['fm'], help="Schedule a meet", hidden=True)
 	async def meet(self, ctx, time, link, *args):
 		if self.bot.config.chef_department[str(ctx.author.id)] == "Administration" and not len(args):
 			await ctx.send("Please Specify the department (only for administration)")

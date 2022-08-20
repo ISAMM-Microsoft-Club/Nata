@@ -8,7 +8,7 @@ class Greeting(commands.Cog):
         self._last_member = None
 
 
-    @commands.command()
+    @commands.command(name='hello', aliases=['hi'], description='Nata will respond with \'hello.\'')
     async def hello(self, ctx, *, member: discord.Member = None):
         """Says hello"""
         member = member or ctx.author
