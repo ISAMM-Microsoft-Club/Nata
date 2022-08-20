@@ -9,14 +9,7 @@ from discord.ext import commands
 async def cogs_manager(bot: commands.Bot, mode: str, cogs: list) -> None:
   for cog in cogs:
     try:
-      if mode == "unload":
-        await bot.unload_extension(cog)
-      elif mode == "load":
-        await bot.load_extension(cog)
-      elif mode == "reload":
-        await bot.reload_extension(cog)
-      else:
-        raise ValueError("Invalid mode.")
+      await bot.load_extension(cog)
     except Exception as e:
       raise e
 
@@ -53,6 +46,7 @@ class Bot(commands.Bot):
       'cogs.General',
       'cogs.ChefCommands',
       'cogs.ErrorHandling',
+      'cogs.Help'
     ]
     await cogs_manager(self, "load", cogs)
     self.loop.create_task(self.startup())
