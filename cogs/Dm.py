@@ -13,9 +13,13 @@ class Dm(commands.Cog):
       if message.author == self.bot.user:
         return
 
+      if message.content.startswith('!'):
+        return
+
       if isinstance(message.channel, discord.channel.DMChannel):
         print(message.author.name)
         await message.channel.send(f'Hello {message.author.name}!')
+
 
 
 async def setup(bot):
