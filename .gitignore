@@ -3,3 +3,4 @@ __testing__.py
 __Data.json
 
 deploy.sh
+cogs/Viw.py
