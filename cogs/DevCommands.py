@@ -11,7 +11,7 @@ class DevCommands(commands.Cog, name='Developer Commands'):
 		self.bot = bot
 
 	async def cog_check(self, ctx):
-		return ctx.author.id in self.bot.owner_ids
+		return ctx.author.id in self.bot.config.owner_ids
 
 
 	@commands.command(name="listcogs", aliases=['lc'])
@@ -37,23 +37,16 @@ class DevCommands(commands.Cog, name='Developer Commands'):
 		"""Initializes The roles messsage in 'Roles' channel
 		"""
 		channel = discord.utils.get(ctx.guild.channels, name="roles")
-		embed = discord.Embed(title="Product Select", description="React to the emojis corresponding with what you need", color=0xE91E63)
-		embed.add_field(name="test", value="""
-:white_check_mark: :    big data
-***-***
-:heart: :    immmmm
-***-***
-:x: :    cmmmmm
-""")
+		embed = discord.Embed(title="Department Selection", description="React to the emojis corresponding with your department", color=0xE91E63)
+		roles_fields = [ f"\n{self.bot.config.roles_init['emojis'][index]} : {self.bot.config.roles_init['department'][index]}\n" for index, value in enumerate(self.bot.config.roles_init["roles"])]
+		embed.add_field(name="test", value=f"""{"***-***".join(roles_fields)}""")
 		message = await channel.send(embed=embed)
-		reactions = ['✅', '❤️', '❌']
-		for reaction in reactions:
+		for reaction in self.bot.config.roles_init["emojis"]:
 			await message.add_reaction(reaction)
 
 	@commands.command(name="clear", aliases=['cls'])
 	async def clear(self, ctx):
-		await self.bot.get_channel(ctx.channel.id).purge(limit=1000)
-		print('purged')
+		await self.bot.get_channel(ctx.channel.id).purge(limit=50)
 		return
 
 async def setup(bot):

@@ -44,10 +44,7 @@ class Bot(commands.Bot):
     await self.tree.sync()
 
   async def setup_hook(self):
-    """Initialize the db, prefixes & cogs."""
 
-
-    # Cogs loader
     cogs = [
       'cogs.DevCommands',
       'cogs.Greeting',
@@ -57,35 +54,33 @@ class Bot(commands.Bot):
       'cogs.ChefCommands',
       'cogs.ErrorHandling',
     ]
-
-
-
     await cogs_manager(self, "load", cogs)
-
-    # Sync application commands
     self.loop.create_task(self.startup())
 
+
+class Config:
+  def __init__(self):
+    self.author_id = 476044993505525780
+    with open("./__Data.json") as data:
+      Variables = json.load(data)
+      self.owner_ids = Variables["owner_ids"]
+      self.roles_channel = Variables['channels']["roles_channel"]
+      self.real_name_channel = Variables['channels']["real_name_channel"]
+      self.chefs_check = [int(id) for id in list(Variables["chefs"].keys())]
+      self.new_member_role = Variables["roles"]["newmember"]
+      self.member_role = Variables["roles"]["member"]
+      self.no_department = Variables["roles"]["no_department"]
+      self.welcome_channel = Variables['channels']["welcome_channel"]
+      self.chefs = Variables["chefs"]
+      self.chef_department = { chef:Variables['chefs'][str(chef)]['department'] for chef in Variables["chefs"]}
+      self.roles_init = Variables["roles"]["roles_init"]
 
 
 if __name__ == '__main__':
 
   bot = Bot()
+  bot.config = Config()
 
-  bot.author_id = 476044993505525780
-  with open("./__Data.json") as data:
-    Variables = json.load(data)
-    bot.owner_ids = Variables["owner_ids"]
-    bot.roles_channel = Variables["roles_channel"]
-    bot.reactions = Variables["roles"]["emojis"]
-    bot.roles = Variables["roles"]["roles"]
-    bot.real_name_channel = Variables["real_name_channel"]
-    bot.chefs_check = [int(id) for id in list(Variables["chefs"].keys())]
-    bot.chefs = Variables["chefs"]
-    bot.chef_department = Variables["chef_department"]
-    bot.new_member_role = Variables["roles"]["newmember"]
-    bot.member_role = Variables["roles"]["member"]
-    bot.no_department = Variables["roles"]["no_department"]
-    bot.welcome_channel = Variables["welcome_channel"]
   bot.run(
     os.environ.get("DISCORD_BOT_SECRET"),
     reconnect=True,
