@@ -6,7 +6,7 @@ import discord
 from discord.ext import commands
 
 
-async def cogs_manager(bot: commands.Bot, mode: str, cogs: list) -> None:
+async def cogs_manager(bot: commands.Bot, cogs: list) -> None:
   for cog in cogs:
     try:
       await bot.load_extension(cog)
@@ -47,7 +47,7 @@ class Bot(commands.Bot):
       'cogs.ChefCommands',
       'cogs.ErrorHandling'
     ]
-    await cogs_manager(self, "load", cogs)
+    await cogs_manager(self, cogs)
     self.loop.create_task(self.startup())
 
 
