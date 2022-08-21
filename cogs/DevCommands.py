@@ -16,13 +16,13 @@ class CustomDropdown(discord.ui.Select):
             placeholder=placeholder,
             min_values=min_val,
             max_values=max_val,
-            options = 
+            options =
                 [
                     discord.SelectOption(
                         label=option["label"],
                         description=option.get("description", None),
                         emoji=option.get("emoji", None)
-                    ) 
+                    )
                     for option in options
                 ]
         )
