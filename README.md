@@ -15,23 +15,17 @@ She offers:
 	- Forms Logging (soon)
 
 
-<br>
-
 
 ## Bot Development Information:
 Written in: **Python**
 
 Made using  [Discordpy](https://github.com/Rapptz/discord.py)
 
-<br>
 
+## Wish to Contribute to this bot? 
+Checkout: <a href="">[contribution guidelines]()</a>
 
 ## License:
 
 [MIT](https://opensource.org/licenses/MIT)
 
-<br>
-
-
-## Wish to Contribute to this bot? 
-Checkout: <a href="">[contribution guidelines]()</a>
