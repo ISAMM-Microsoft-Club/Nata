@@ -1,3 +1,5 @@
+import time
+
 import discord
 from discord.ext import commands
 
@@ -21,6 +23,14 @@ class General(commands.Cog):
     one_word_per_line = '\n'.join(args)
     quote_text = 'You said:\n>>> {}'.format(one_word_per_line)
     await ctx.send(quote_text)
+
+  @commands.hybrid_command(name="ping", description="Ping the bot.")
+  @commands.cooldown(1, 5, commands.BucketType.user)
+  async def ping(self, ctx: commands.Context):
+    before = time.monotonic()
+    message = await ctx.send(":ping_pong: Pong !")
+    ping = (time.monotonic() - before) * 1000
+    await message.edit(content=f":ping_pong: Pong ! in `{float(round(ping/1000.0,3))}s` ||{int(ping)}ms||")
 
 async def setup(bot):
 	await bot.add_cog(General(bot))
