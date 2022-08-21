@@ -2,7 +2,7 @@
 <!-- image here -->
 <!-- <hr> -->
 
-##  Introduction:
+##  Introduction
 Nata is our official discord bot!
 She is a multipurpose Bot developed for ISAMM Microsoft Club's Discord Server.
 
@@ -22,7 +22,7 @@ Written in: **Python**
 Made using  [Discordpy](https://github.com/Rapptz/discord.py)
 
 
-## Wish to Contribute to this bot? 
+## Wish to Contribute to Nata?
 Checkout: <a href="">[contribution guidelines]()</a>
 
 ## License:
