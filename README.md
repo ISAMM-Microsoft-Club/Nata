@@ -16,8 +16,7 @@ She offers:
 
 
 <br>
-<hr>
-<br>
+
 
 ## Bot Development Information:
 Written in: **Python**
@@ -25,16 +24,14 @@ Written in: **Python**
 Made using  [Discordpy](https://github.com/Rapptz/discord.py)
 
 <br>
-<hr>
-<br>
+
 
 ## License:
 
 [MIT](https://opensource.org/licenses/MIT)
 
 <br>
-<hr>
-<br>
+
 
 ## Wish to Contribute to this bot? 
 Checkout: <a href="">[contribution guidelines]()</a>
