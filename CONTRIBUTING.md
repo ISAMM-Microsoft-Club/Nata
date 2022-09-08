@@ -41,6 +41,6 @@ Submitting a pull request is fairly simple, just make sure it focuses on a singl
     - Please use the shorthand `#123` and not the full URL.
 - Commits regarding the commands extension must be prefixed with `[commands]`
 
-With that being said, you have officially contributed to IMC Forms! Thank you so much 🤩!
+With that being said, you have officially contributed to Nata! Thank you so much 🤩!
 
 <!--Contributing.md: writeup #1-->
