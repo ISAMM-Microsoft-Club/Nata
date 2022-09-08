@@ -8,12 +8,12 @@ class Greeting(commands.Cog):
         self._last_member = None
 
 
-    @commands.command()
+    @commands.command(name='hello', aliases=['hi'], description='Nata will respond with \'hello.\'')
     async def hello(self, ctx, *, member: discord.Member = None):
         """Says hello"""
         member = member or ctx.author
-        if member.id in self.bot.chefs_check:
-            await ctx.send(f"Hello {self.bot.chefs[str(member.id)]} {member.nick or member.name}!")
+        if member.id in self.bot.config.chefs_check:
+            await ctx.send(f"Hello {self.bot.config.chefs[str(member.id)]['position']} {member.nick or member.name}!")
         else :
             if self._last_member is None or self._last_member.id != member.id:
                 await ctx.send('Hello {}~'.format(member.nick))
