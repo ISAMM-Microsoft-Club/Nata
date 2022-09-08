@@ -1,14 +1,19 @@
-## Contributing to Nata
+# Contributing to Nata 🤝!
+🎊👏 Firstly, thank you so much for taking out time to contribute to Nata! 👏🎊
 
-First off, thanks for taking the time to contribute. :+1:
+The following is a set of guidelines for contributing to Nata. These are mostly guidelines, not rules. Use your best judgment, and feel free to propose changes to this document in a pull request.
 
-The following is a set of guidelines for contributing to the repository. These are guidelines, not hard rules.
+## [Code of Conduct](#code-of-conduct)
+> This project and everyone participating in it is governed by the Nata code of conduct. By participating, you are expected to uphold this code. Please report unacceptable behavior to the developers.
 
 ## This is too much to read! I want to ask a question!
 
 Generally speaking questions are better suited in [discussions](https://github.com/ISAMM-Microsoft-Club/Nata/discussions).
 
 Please try your best not to ask questions in our issue tracker. Most of them don't belong there unless they provide value to a larger audience.
+
+## [What do I require before getting started?](#prerequisites)
+We expect that you have experienced with [Python](https://www.python.org/) and [Discord.py](https://github.com/Rapptz/discord.py) before.
 
 ## Good Bug Reports
 
@@ -32,9 +37,10 @@ Submitting a pull request is fairly simple, just make sure it focuses on a singl
 ### Git Commit Guidelines
 
 - Use present tense (e.g. "Add feature" not "Added feature")
-- Limit all lines to 72 characters or less.
 - Reference issues or pull requests outside of the first line.
     - Please use the shorthand `#123` and not the full URL.
 - Commits regarding the commands extension must be prefixed with `[commands]`
 
-If you do not meet any of these guidelines, don't fret. Chances are they will be fixed upon rebasing but please do try to meet them to remove some of the workload.
+With that being said, you have officially contributed to IMC Forms! Thank you so much 🤩!
+
+<!--Contributing.md: writeup #1-->
