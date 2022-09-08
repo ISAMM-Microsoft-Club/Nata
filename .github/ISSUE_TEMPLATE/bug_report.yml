@@ -2,8 +2,6 @@ name: Bug Report
 title: "[Bug]: "
 labels: bug
 description: Report broken or incorrect behaviour
-assignees:
-  - hammamikhairi
 body:
   - type: markdown
     attributes:
