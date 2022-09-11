@@ -40,7 +40,7 @@ class dropdown(Parent):
 
         self.add_item(
             CustomDropdown(
-                placeholder=placeholder, 
+                placeholder=placeholder,
                 min_val=min_val,
                 max_val=max_val,
                 options=options,

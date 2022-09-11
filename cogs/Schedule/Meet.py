@@ -42,7 +42,7 @@ class Meet:
     embed = discord.Embed(title='Presence Check',
                           description=f'Report of the last {self.dept} Department meeting \n held on {self.date} at {self.time}',
                           colour=0x00ffff)
-    embed.set_thumbnail(url="https://raw.githubusercontent.com/hammamikhairi/tests/main/logo.png?token=GHSAT0AAAAAABR6VEQ5BGEMEFBIPMU3EQCKYX765GQ")
+    embed.set_thumbnail(url="logo.png")
     if len(present__report):
       embed.add_field(name='Present people', value='\n'.join(present__report), inline=False)
     else:

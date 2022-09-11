@@ -1,0 +1,79 @@
+{
+  "owner_ids": [
+    476044993505525780,
+    876187417634291752
+  ],
+  "chefs": {
+    "876187417634291752": {
+      "position" : "President",
+      "department" : "Administration",
+      "department_id" : ""
+    },
+    "476044993505525780": {
+      "position" : "Vice President",
+      "department" : "Administration",
+      "department_id" : ""
+    },
+    "699990903477108786": {
+      "position" : "Chef Protocole",
+      "department" : "Administration",
+      "department_id" : ""
+    },
+    "374319257976176671": {
+      "position" : "Chef formation",
+      "department" : "Training",
+      "department_id" : ""
+    },
+    "784376469371093003": {
+      "position" : "Community manager",
+      "department" : "Administration",
+      "department_id" : ""
+    },
+    "771438796372967424": {
+      "position" : "Chef Design",
+      "department" : "Design",
+      "department_id" : ""
+    },
+    "583802100337606677": {
+      "position" : "Chef media",
+      "department" : "Media",
+      "department_id" : ""
+    }
+  },
+  "channels" : {
+    "real_name_channel": 1010316979124588635,
+    "welcome_channel": 1010317564632637450,
+    "roles_channel": 1010317036284551349
+  },
+  "roles": {
+    "no_department": 1010311702757261332,
+    "newmember": 1010315769738952705,
+    "member": 1010316034156281916,
+    "roles_init": {
+      "emojis": [
+        "🤔",
+        "✅",
+        "❤️",
+        "🇨",
+        "🇪",
+        "🇫"
+      ],
+      "roles": [
+        1010322168904683671,
+        1010322084267819038,
+        1010322238521737367,
+        1010596563577487422,
+        1010596656695218248,
+        1010596814308774019
+      ],
+      "department" : [
+        "Design Department",
+        "Training Department",
+        "Media Department",
+        "Sponsoring Department",
+        "Logistics Department",
+        "Video Editing Department"
+      ]
+    }
+  }
+}
