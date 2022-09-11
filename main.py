@@ -45,7 +45,8 @@ class Bot(commands.Bot):
       'cogs.Roles',
       'cogs.General',
       'cogs.ChefCommands',
-      'cogs.ErrorHandling'
+      'cogs.ErrorHandling',
+      'cogs.Help'
     ]
     await cogs_manager(self, cogs)
     self.loop.create_task(self.startup())

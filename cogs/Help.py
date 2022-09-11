@@ -41,17 +41,17 @@ class HelpCommand(commands.HelpCommand):
                     else :
                         hidden_commands.append(command.name)
 
-        embed = discord.Embed(color=discord.Color.dark_grey(), title = "👋 Help · Home", description = f"Welcome to the help page.\n\nUse `help command` for more info on a command.\n\u200b")
+        embed = discord.Embed(color=discord.Color.dark_grey(), title = "👋 Help · Home", description = f"Welcome to the help page.\n\nUse `!help command` for more info on a command.\n\u200b")
         commands = "\n".join(commands)
         hidden_commands = "\n".join(hidden_commands)
         embed.add_field(name="Commands", value=f'{commands}\n\u200b', inline=False)
         if self.context.message.author.id in self.privlaged_members:
             print("private")
             #!! Don't forhet to update this
-            if self.context.channel.id != 1010317036284551349:
-                warning = discord.Embed(color=discord.Color.dark_red(), title = "Warning", description = f"Private commands can't be shared in public channels!")
-                await self.context.send(embed=warning)
-                return
+                # if self.context.channel.id != 1010317036284551349:
+                #     warning = discord.Embed(color=discord.Color.dark_red(), title = "Warning", description = f"Private commands can't be shared in public channels!")
+                #     await self.context.send(embed=warning)
+                #     return
             embed.add_field(name="Private Commands", value=f'{hidden_commands}\n\n\u200b', inline=False)
             embed.add_field(name="Who am I ?", value="I'm Nata made by [a group of developers](https://github.com/ISAMM-Microsoft-Club/Nata/graphs/contributors) in Isamm Microsoft Club in 2022.\nI'm open source, you can see my code on [Github](https://github.com/ISAMM-Microsoft-Club/Nata) !")
             await self.context.send(embed = embed, delete_after=120)
@@ -64,7 +64,7 @@ class HelpCommand(commands.HelpCommand):
         params = ""
         for param in command.clean_params:
             params += f" <{param}>"
-        embed.add_field(name="Usage", value=f"{command.clean_prefix}{command.name}{params}", inline=False)
+        embed.add_field(name="Usage", value=f"!{command.name}{params}", inline=False)
         if len(command.aliases):
           embed.add_field(name="Aliases", value=f"`{command.aliases}`")
         embed.set_footer(text="Remind : Hooks such as <> must not be used when executing commands.", icon_url=self.context.message.author.display_avatar.url)
@@ -81,7 +81,6 @@ class Help(commands.Cog, name="help"):
         }
 
         bot.help_command = HelpCommand(command_attrs=attributes)
-        bot.help_command.cog = self
 
 
 
