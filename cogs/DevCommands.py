@@ -98,6 +98,10 @@ class DevCommands(commands.Cog, name='Developer Commands'):
 		await self.bot.get_channel(ctx.channel.id).purge(limit=int(limit))
 		return
 
+	@commands.command(name="absent", aliases=['irl-abs'], help="Mark the absence of members in irl meeting manually", hidden=True)
+	async def absent(self, ctx, *id, severity):
+		return 
+
 
 async def setup(bot):
 	await bot.add_cog(DevCommands(bot))
